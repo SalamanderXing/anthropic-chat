@@ -1,4 +1,7 @@
 import os
+
+os.environ['CHAINLIT_AUTH_SECRET']='IGm3OVkSTpvJmyyBB-*Nl23YTa1TKDPHUqdbm..zhl7Pcx4/o9uG:Nj6P3SrPPAA'
+
 import sys
 import ipdb
 import anthropic
@@ -58,6 +61,7 @@ async def call_claude():
     chat = ChatAnthropic(
         temperature=0,
         model_name="claude-3-opus-20240229",
+        max_tokens=4096
     )
     full_msg = AIMessage(content="")
     chat_history.append(full_msg)

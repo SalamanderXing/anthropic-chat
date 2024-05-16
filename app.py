@@ -1,20 +1,16 @@
 import os
 
-os.environ['CHAINLIT_AUTH_SECRET']='IGm3OVkSTpvJmyyBB-*Nl23YTa1TKDPHUqdbm..zhl7Pcx4/o9uG:Nj6P3SrPPAA'
 
-import sys
-import ipdb
-import anthropic
+CHAINLIT_AUTH_SECRET = "jTc7f/nqfi,JcZ$$S~8o%QAsl2JDMMyF^pTH%PmnP:,^M*soRBj.YH.26w3exzCV"
+os.environ["CHAINLIT_AUTH_SECRET"] = CHAINLIT_AUTH_SECRET;
+
+# os.environ['CHAINLIT_AUTH_SECRET']='IGm3OVkSTpvJmyyBB-*Nl23YTa1TKDPHUqdbm..zhl7Pcx4/o9uG:Nj6P3SrPPAA'
+
 import chainlit as cl
 from langchain_core.messages import AnyMessage, HumanMessage, AIMessage, SystemMessage
 from chainlit.playground.providers import Anthropic
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
-import threading
-import asyncio
-import uuid
-
-# from websockets import WebSocketServer, serve
 import websockets
 
 
@@ -45,19 +41,6 @@ async def call_claude():
     # prompt_history = cl.user_session.get("prompt_history")
     chat_history = cl.user_session.get("chat_history")  # type: list[AnyMessage]
 
-    # prompt = f"{prompt_history}{anthropic.HUMAN_PROMPT}{query}{anthropic.AI_PROMPT}"
-
-    # settings = {
-    #     "stop_sequences": [anthropic.HUMAN_PROMPT],
-    #     "max_tokens_to_sample": 1000,
-    #     "model": "claude-3-opus-20240229",
-    # }
-
-    # stream = await c.completions.create(
-    #     prompt=prompt,
-    #     stream=True,
-    #     **settings,
-    # )
     chat = ChatAnthropic(
         temperature=0,
         model_name="claude-3-opus-20240229",
